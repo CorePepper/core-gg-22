@@ -32,7 +32,6 @@ export default defineConfig(({ mode }) => ({
           vendor: ['react', 'react-dom', 'react-router-dom'],
           ui: ['@radix-ui/react-toast', '@radix-ui/react-tooltip'],
         },
-        // ここに以下の設定を追加
         assetFileNames: (assetInfo) => {
           let extType = assetInfo.name.split('.').pop();
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
@@ -40,6 +39,9 @@ export default defineConfig(({ mode }) => ({
           }
           return `assets/${extType}/[name]-[hash][extname]`;
         },
+        // ここに以下の設定を追加
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
       },
     },
   },
