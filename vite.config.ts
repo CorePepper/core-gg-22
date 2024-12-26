@@ -8,9 +8,6 @@ export default defineConfig(({ mode }) => ({
   server: {
     host: '::',
     port: 8080,
-    headers: {
-      'Content-Type': 'text/javascript; charset=utf-8',
-    },
   },
   plugins: [
     react(),
@@ -23,9 +20,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    modulePreload: {
-      polyfill: true,
-    },
+    modulePreload: false, // ここを変更
     rollupOptions: {
       output: {
         manualChunks: {
@@ -39,7 +34,6 @@ export default defineConfig(({ mode }) => ({
           }
           return `assets/${extType}/[name]-[hash][extname]`;
         },
-        // ここに以下の設定を追加
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
       },
